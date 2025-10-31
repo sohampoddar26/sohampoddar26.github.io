@@ -133,7 +133,8 @@ nav .container {
 #hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 100px 0;
+    /* Reduce space after the button by lowering bottom padding */
+    padding: 100px 0 60px;
     text-align: center;
 }
 
@@ -141,6 +142,34 @@ nav .container {
     max-width: 800px;
     margin: 0 auto;
 }
+
+/* Hero with profile photo layout */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+#hero .hero-grid .hero-content {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+}
+
+#hero .hero-grid .social-links { justify-content: flex-start; }
+#hero .hero-grid .hero-buttons { justify-content: flex-start; }
+
+.hero-photo { display: flex; justify-content: center; }
+.profile-photo {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.hero-content .hero-photo { margin: 1rem 0 1.5rem; }
 
 .hero-title {
     font-size: 3rem;
@@ -327,6 +356,16 @@ section:nth-child(even) {
 }
 
 @media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    #hero .hero-grid .hero-content { text-align: center; }
+    #hero .hero-grid .social-links { justify-content: center; }
+    #hero .hero-grid .hero-buttons { justify-content: center; }
+
+    .profile-photo { width: 200px; height: 200px; }
     .timeline-item::before {
         left: 20px; /* match the shifted timeline line on mobile */
         transform: none;
