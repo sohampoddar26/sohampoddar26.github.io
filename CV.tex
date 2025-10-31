@@ -1,0 +1,482 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
+%
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=10pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+\usepackage{wrapfig}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\geometry{left=1.4cm, top=1.4cm, right=1.4cm, bottom=1.4cm, footskip=.01cm}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{888888888888888888}	% Box to align text
+\newcommand{\sepspace}{\vspace*{0.6em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{Black}{%
+			\parbox{6em}{%
+			\hfill\color{White}#2}} \par  % Duration
+		\noindent \textit{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{Black}{\color{White}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+
+
+% \addtolength{\topmargin}{-.4in}
+% \addtolength{\textheight}{.8in}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+% you can upload a photo and include it here...
+% \begin{wrapfigure}{l}{0.5\textwidth}
+% 	\vspace*{-2em}
+% 		\includegraphics[width=0.15\textwidth]{photo}
+% \end{wrapfigure}
+
+\MyName{Soham Poddar}
+\MySlogan{PMRF Research Scholar}
+\MySlogan{Indian Institute of Technology, Kharagpur} % \\Curriculum Vitae}
+
+% \sepspace
+
+%%% Personal details
+\vspace*{-5mm}
+
+%%% ------------------------------------------------------------
+\NewPart{Personal details}{}
+
+% \PersonalEntry{Birth}{June 26, 1996}
+% \PersonalEntry{Address}{Kalpukur, Nabapally, Barasat, Kolkata-700126, India.}
+% \PersonalEntry{Phone}{(+91) 91 6364 2188}
+\PersonalEntry{Contact}{\url{sohampoddar26@gmail.com} \hspace{5mm} \textit{OR} \hspace{5mm} \texttt{+91 9163642188}}
+% \PersonalEntry{}{}
+\PersonalEntry{Website}{\url{https://sohampoddar26.github.io/}}
+\PersonalEntry{Google~Scholar}{\url{https://scholar.google.com/citations?user=PIIZaa0AAAAJ&hl=en/}}
+% \PersonalEntry{Github}{\url{https://github.com/sohampoddar26}}
+\PersonalEntry{Research Interests}{Deep Learning, Natural Language Processing, Agentic AI, Domain-specific applications.}
+% \sepspace
+
+\vspace*{-2mm}
+
+
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\vspace*{-1mm}
+
+\EducationEntry{PhD in Computer Science and Engineering (Thesis submitted)}{2020-2025}{Indian Institute of Technology, Kharagpur. }{Under the guidance of \textbf{Dr. Saptarshi Ghosh}. (Coursework CGPA: \textbf{9.3})\\ 
+% Prime Minister's Research Fellow (\textbf{PMRF}, since January 2021)\\ 
+\textbf{Thesis title:} \textit{Effects of COVID-19 pandemic on
+Vaccine-Opinions through Social Media Analyses}}
+\sepspace
+
+\EducationEntry{MTech Degree in Computer Science and Engineering}{2018-2020}{Indian Institute of Technology, Kharagpur}{Graduated with CGPA: \textbf{9.6} (Department Rank: \textbf{2}) \\ \textbf{Thesis Title:} \textit{Summarizing Legal Case Documents: Incorporating Domain Knowledge in Summarization Algorithms}}
+\sepspace
+
+\EducationEntry{BTech Degree in Computer Science and Technology}{2014-2018}{Indian Institute of Engineering Science and Technology, Shibpur}{Graduated with CGPA: \textbf{9.1} }
+
+%\sepspace
+
+% \EducationEntry{Indian School Certificate (ISC) Exam}{2014}{Auxilium Convent School, Barasat}{Passed with 94.75\%}
+% \sepspace
+
+% \EducationEntry{Indian Certificate of Secondary Education (ICSE) Exam}{2012}{Auxilium Convent School, Barasat}{Passed with 92.8\% }
+\vspace*{-2mm}
+
+
+\NewPart{Experience}{}
+
+\vspace*{-1mm}
+
+\EducationEntry{Research Intern}{Jun-Dec 2025}{Hewlett Packard Enterprise Labs}{Developing and benchmarking LLM Agentic frameworks for context engineering, long-term memory and data management.} 
+
+\vspace*{-2mm}
+
+
+
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Skills}{}
+
+\vspace*{-1mm}
+
+\SkillsEntry{Human Languages}{English (fluent), Bengali (native), Hindi}
+% \sepspace
+
+\SkillsEntry{Computer Languages}{\textsc{Python} (extensive experience), \textsc{C}, \textsc{C++}, \textsc{Java}, \textsc{HTML}, \textsc{CSS}}
+% \sepspace
+
+\SkillsEntry{Tools/Technologies}{\textsc{LangGraph}, \textsc{Transformers}, \textsc{Huggingface}, \textsc{PyTorch}, \textsc{Flask}, \textsc{Docker}, \textsc{GCP}}
+
+
+\SkillsEntry{}{\textsc{Github Copilot}, \textsc{Git}, \textsc{Linux}, \LaTeX
+}
+
+
+% \sepspace
+
+% \SkillsEntry{Soft}{}
+% \sepspace
+
+\SkillsEntry{Hobbies}{Bass Guitar, Motorcycling, Swimming, Gaming, watch Formula \textbf{1} \& STEM documentaries}
+% \sepspace
+
+
+\vspace*{-2mm}
+
+
+
+%%% Awards
+%%% ------------------------------------------------------------
+\NewPart{Awards}{}
+
+{
+\small
+% \normalsize
+    % \noindent $\bullet$ Received \textbf{ACM IARCS Travel Grant} to attend NAACL 2025 in Albuquerque, USA.
+    
+    % \noindent $\bullet$ Received \textbf{ACM IARCS Travel Grant} and \textbf{Volunteer Travel Grant} to attend ICWSM 2024 in Buffalo, USA.
+    
+    % \noindent $\bullet$ Received \textbf{Student Travel Grant} to attend  SIGIR 2022 in Madrid, Spain. \sepspace
+    
+    
+    \noindent $\bullet$ Awarded \textbf{PMRF fellowship} by Ministry of Education, Govt. of India. December 2020 cycle. 
+
+    \noindent $\bullet$ Received several \textbf{Travel Grants} to attend  SIGIR~2022 (Madrid), ICWSM~2024 (Buffalo), NAACL~2025 (Albuquerque). 
+    \sepspace
+
+    
+    \noindent $\bullet$ \textbf{Best Student Paper} Award at ICAIL 2021 %\sepspace
+    
+    \noindent $\bullet$ Qualified for the onsite \textbf{regionals of ACM ICPC} in \textbf{Dec 2016} (IIT Kharagpur region) and \textbf{Dec 2017} (Kolkata region). \sepspace
+    
+    \noindent $\bullet$ Finalist and winner of several \textbf{coding and robotics challenges} in different tech fests (at IIT Kgp, IIEST Shibpur, etc.)
+    
+    \noindent $\bullet$ Winner of \textbf{Music Cup} of the Inter IIT Cultural meet \textbf{2019} (at IIT Bombay) and \textbf{2023} (at IIT Kharagpur). 
+}
+
+
+
+
+\vspace*{-2mm}
+
+
+
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+\NewPart{Publications}{}
+
+\vspace*{-1mm}
+
+{
+\small
+% \normalsize
+    \noindent $\bullet$ Soham Poddar, Paramita Koley, Janardan Misra, Niloy Ganguly, Saptarshi Ghosh. 
+    \textbf{``Brevity is the soul of sustainability: Characterizing LLM response lengths''} 
+    \textit{In Findings of the Association for Computational Linguistics: ACL 2025}
+    \sepspace
+    
+    \noindent $\bullet$ Soham Poddar, Paramita Koley, Janardan Misra, Niloy Ganguly, Saptarshi Ghosh. \textbf{``Towards Sustainable NLP: Insights from Benchmarking Inference Energy in Large Language Models''} \textit{In Proceedings of Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL), 2025}. \sepspace
+
+    % \sepspace
+
+    \noindent $\bullet$ Soham Poddar, Subhendu Khatuya, Rajdeep Mukherjee, Niloy Ganguly, Saptarshi Ghosh. \textbf{``How COVID-19 has Impacted the Anti-Vaccine Discourse: A Large-Scale Twitter Study Spanning Pre-COVID and Post-COVID Era''} \textit{In Proceedings of the 18th International AAAI Conference of Web and Social Media (ICWSM) 2024}. \sepspace
+
+    \noindent $\bullet$ Soham Poddar, Rajdeep Mukherjee, Azlaan Mustafa Samad, Niloy Ganguly, Saptarshi Ghosh. \textbf{''MuLX-QA: Classifying Multi-Labels and Extracting Rationale Spans in Social Media Posts''} \textit{ACM Transactions on the Web (TWEB), 2024.} \sepspace
+
+
+    \newpage
+
+    \noindent $\bullet$ Soham Poddar, Azlaan Mustafa Samad, Rajdeep Mukherjee, Niloy Ganguly, Saptarshi Ghosh. \textbf{``CAVES: A dataset to facilitate explainable classification and summarization of concerns towards COVID vaccines''}. \textit{In Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR) 2022}. 
+    \sepspace
+    % \newpage
+    
+    \noindent $\bullet$ Soham Poddar, Mainack Mondal, Janardan Misra, Niloy Ganguly, and Saptarshi Ghosh. \textbf{``Winds of Change: Impact of COVID-19 on Vaccine-related Opinions of Twitter users''} \textit{In Proceedings of the 16th International AAAI Conference of Web and Social Media (ICWSM) 2022}. \sepspace
+
+    % \newpage
+
+    \noindent $\bullet$ Abhay Shukla, Paheli Bhattacharya, Soham Poddar, Rajdeep Mukherjee, Kripabandhu Ghosh, Pawan Goyal and Saptarshi Ghosh. \textbf{``Legal Case Document Summarization: Extractive and Abstractive Methods and their Evaluation''}. \textit{The 2nd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics and the 12th International Joint Conference on Natural Language Processing (AACL-IJCNLP), 2022}. \sepspace
+
+    \noindent $\bullet$ Paheli Bhattacharya, Soham Poddar, Koustav Rudra, Kripabandhu Ghosh, and Saptarshi Ghosh. \textbf{``Incorporating Domain Knowledge for Extractive Summarization of Legal Case Documents''} \textit{In Proceedings of the 18th International Conference on Artificial Intelligence and Law (ICAIL) 2021.} \sepspace
+
+    % \sepspace
+    
+    \noindent $\bullet$ Soham Poddar, Biswajit Paul, Moumita Basu, and Saptarshi Ghosh. \textbf{``ICPR 2024 Competition on Multilingual Claim-Span Identification''}.  
+    \textit{In Proceedings of the 27th International Conference on Pattern Recognition (ICPR), 2024.} \sepspace
+
+    % \newpage
+    
+    \noindent $\bullet$ Rahul Pullanikkat, Soham Poddar, Anik Das, Tushar Jaiswal, Vivek Kumar Singh, Moumita Basu, and Saptarshi Ghosh. \textbf{``Utilizing the Twitter social media to identify transportation-related grievances in Indian cities''}. \textit{Social Network Analysis and Mining (SNAM), 2024}. 
+    \vspace{1.5mm}
+    
+    \noindent $\bullet$  Soham Poddar, Mainack Mondal, and Saptarshi Ghosh. \textbf{``A Survey on Disaster: Understanding the After-effects of Super-cyclone Amphan and Helping Hand of Social Media.''} \textit{Advances in Urban Design and Engineering, Springer, 2022.} 
+    \vspace{1.5mm}
+    
+    
+    \noindent $\bullet$ Ashish Kumar Layek, Soham Poddar, and Sekhar Mandal. \textbf{``Detection of Flood Images Posted on Online Social Media for Disaster Response.''} \textit{In Proceedings of the 2nd International Conference on Advanced Computational and Communication Paradigms (ICACCP)  2019.} 
+}
+% \sepspace
+\vspace*{-2mm}
+
+
+
+
+
+
+\NewPart{Systems Developed}{}
+
+\vspace*{-1mm}
+{
+\small
+    \noindent $\bullet$ \textbf{MESSAGE CHECK} is a fact-checking dashboard, and a predictive learning platform to identify existing fact-checks from www.vishvasnews.com that match dis/misinformation claims going viral. It also enables fact-checkers to predict misinformation around events and identify seasonal or event-based trends that cause a surge in misinformation. 
+    Given a multilingual query, it was processed using BM25+ retriever, a supervised Fasttext classifier and a small BERTScore model. It was then merged using Reciprocal Rank Fusion method to efficiently and effectively match debunked claims from a database.
+
+    \noindent Link to website: https://mdp.vishvasnews.com/ 
+}
+% \sepspace
+\vspace*{-2mm}
+
+
+
+
+
+%%% Projects
+%%% ------------------------------------------------------------
+\NewPart{Selected Projects}
+\vspace*{-1mm}
+{ \small
+
+\EducationEntry{Optimizing Energy Efficiency of LLMs}{2024-2025}{IIT Kharagpur}{We first benchmarked the energy usage of different LLMs for various NLP tasks under different scenarios, and the effect of different optimizations methodologies [e.g. I/O compression, model compression, speculative decoding] in reducing energy consumption. 
+% We studied the effect that different parameters such as input/output length, model size, task complexity, batching, and quantization have on the inference energy consumed.
+We then showed that LLMs generate very long answers for factual queries, and formally categorize the information into different classes [e.g. minimal answer, additional information, reasoning, redundant information]. We highlight the trade-offs of such long answers that improve the user experience and utility but come at the expense of much higher energy consumption (which add up over time). We also explored some simple strategies (fine-tuning (SFT), prompt-engineering with target length prediction, next token entropy mapping) to control the length and content composition of generated outputs, which can be used depending on the specific use case/user preferences.  
+}
+\sepspace
+
+\EducationEntry{Characterizing User Opinions towards Vaccines on Twitter (PhD Thesis Work)}{2020-2025}{IIT Kharagpur}{We used automated NLP methods to systematically analyse and derive insights from the vaccine-opinions of various Twitter user-groups, and how these have evolved in course of the COVID-19 pandemic. 
+Beyond high-level Anti- and Pro-vax categorization, we tried to understand specific reasons why people are hesitant to take vaccines and what causes them to change their opinions. We developed the large-scale annotated CAVES dataset for explainable multi-label classification of 12 vaccine concerns (e.g. side-effect, ineffectiveness, political, conspiracies). 
+We also developed Transformer models (encoder-only, LLMs) and trained (SGD, SFT, LORA) them to identify concerns towards vaccines effectively, while extracting spans that explain the specific concerns. 
+% We used such methods for deriving insights from longitudinal Twitter
+% Through a longitudinal study (5+ years) of tweets, we found that these concerns have become much varied since COVID-19 pandemic, and generic counter-arguments are not enough anymore. We also found cases where new concerns about COVID-vaccines have been transferred to traditional non-COVID vaccines, along with erosion of trust in the healthcare systems. 
+We also explored prompt-tuning and fine-tuning LLMs to provide personalised arguments to counter anti-vaccine content on social media to resolve misconceptions.}
+\sepspace
+
+
+% \sepspace
+
+\EducationEntry{Summarizing Legal Case Documents (MTech Project and beyond)}{2019-2022}{IIT Kharagpur}{Compared the performance of various summarization algorithms [generic and domain-specific; abstractive and extractive; classical ML vs Transformers based methods] on our curated set of UK and Indian Supreme courts' Legal Judgement Documents. We also created an unsupervised Linear Programming based method to systematically incorporate guidelines from legal experts into to create summaries with appropriate proportions of different rhetorical roles [e.g. fact, statutes, precedents, final judgement].
+}
+
+\sepspace
+
+
+% \EducationEntry{Indian Legal Question-Answering}{2024-2025}{IIT Kharagpur}{We collected a dataset of legal queries by common people answered by lawyers from an Indian legal QA forum. We are trying to find optimal settings for automated answering of such legal queries using popular closed- and open-source LLMs, including zero/few-shot prompting, fine-tuning (SFT/DPO), and incorporating relevant statutes/precedents for RAG.
+% We also are in the process of developing effective ways to evaluate such open-ended generated responses in the legal context, modifying traditional metrics and training effective evaluator models.
+% }
+
+
+
+
+
+
+
+
+% \NewPart{Other recent projects}
+% \vspace*{-1mm}
+% { \small
+
+% \EducationEntry{Question Answering based method for Explainable Multi-label Tweet classification}{2022-2023}{IIT Kharagpur}{We are experimenting with various Transformer-based Deep Learning models, specifically Question Answering models to perform explanation extraction from Tweets along with classification. The explanations are for each of the multiple-labels based on concerns that people have towards COVID-19 vaccines.}
+% \sepspace
+
+% \EducationEntry{Reinforcement Learning Based Summarization of Legal Documents}{2020}{IIT Kharagpur}{We implemented a deep reinforcement learning~(RL) based model for summarizing Indian legal case documents. The RL model helped in optimizing the ROUGE scores during the training of the SummaRuNNer model, which eventually led to better scores overall along with faster convergence.} 
+% % \sepspace
+
+% }
+
+
+% \EducationEntry{Survey on the After-effects of Super-cyclone Amphan}{2020}{IIT Kharagpur}{Conducted a survey among people affected by super-cyclone Amphan, and analysed the data to estimate the damages caused, their effects of the people and how social media posts impacted them. We also discussed how social media can be used by authorities in future for disaster mitigation by effective communication with affected people.} 
+
+% \sepspace
+
+
+% \EducationEntry{Semantic Text matching for Legal Case Documents}{2020}{IIT Kharagpur}{Implemented the  Siamese  Multi-depth  Attention-baSed  Hierarchical(SMASH)  RNN  model for semantic text matching of long documents, proposed by Jiang et.al. [WWW 2019] to work on Indian legal case documents.}
+
+% \sepspace
+% \EducationEntry{Matching of Legal Case Documents over Legal Articles}{2019}{IIT Kharagpur}{Modified the Dynamic Pairwise Attention Model (DPAM) proposed by Wang et al. [SIGIR, 2018] to work on Indian Legal data. It matches evidences/facts (Query from user) to legal articles (Statutes) that are relevant to it.}
+% \sepspace
+
+% \newpage
+
+
+
+% \EducationEntry{Detection of Flood Images Posted on social media (BTech Project)}{2017- 2018}{IIEST Shibpur}{Developed a CNN-based classifier to detect flood water areas from social media images to help in disaster mitigation.}
+% \sepspace
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+% \NewPart{Officially Reviewed Papers for}{}
+
+% {
+% \small
+% % \normalsize
+%     \noindent $\bullet$ Connection Science (CCOS) Journal, 2024. \sepspace
+    
+%     \noindent $\bullet$ Artificial Intelligence and Law (ARTI) Journal, 2024. \sepspace
+
+%     \noindent $\bullet$ The 18th International AAAI Conference of Web and Social Media (ICWSM) 2024 \sepspace
+
+%     \noindent $\bullet$ Online Social Networks and Media (OSNEM) Journal, 2023. \sepspace
+    
+%     \noindent $\bullet$ The 16th International AAAI Conference of Web and Social Media (ICWSM) 2022 \sepspace
+% }
+% % \sepspace
+% \vspace*{-2mm}
+
+
+
+
+
+
+% \NewPart{Shared Tasks/Competitions Organized}{}
+
+% {
+% \small
+%     \noindent $\bullet$ Multilingual Claim Span Identification at ICPR 2024. https://sites.google.com/view/icpr24-csi/home
+%      \sepspace
+
+%     \noindent $\bullet$ Artificial Intelligence on Social Media at FIRE 2023.
+%     https://sites.google.com/view/aisome/aisome
+%      \sepspace
+
+%     \noindent $\bullet$ Information Retrieval from Microblogs during Disasters at FIRE 2022.
+%     https://sites.google.com/view/irmidis-fire2022/irmidis
+%      \sepspace
+
+%     \noindent $\bullet$ Information Retrieval from Microblogs during Disasters at FIRE 2021.
+%     https://sites.google.com/view/irmidisfire2021
+%      \sepspace
+
+% }
+% % \sepspace
+% \vspace*{-2mm}
+
+
+
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+% \NewPart{Teaching Assistant for Courses (at IIT Kharagpur)}{}
+
+% {
+% \small
+% % \normalsize
+%     \noindent $\bullet$ Natural Language Processing, Spring \textbf{2024}. \sepspace
+
+%     \noindent $\bullet$ Operating Systems Theory and Lab, Spring \textbf{2022} and \textbf{2023}. \sepspace
+    
+%     \noindent $\bullet$ Programming and Data Structures Lab, Autumn \textbf{2020} and \textbf{2021}. \sepspace
+    
+%     \noindent $\bullet$ Social Computing, Autumn \textbf{2019}, \textbf{2020} and \textbf{2023}. \sepspace
+    
+%     \noindent $\bullet$ Machine Learning, Spring \textbf{2020}. \sepspace
+% }
+
+% \sepspace
+\vspace*{-3mm}
+
+
+\end{document}
+
+
