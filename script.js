@@ -75,7 +75,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all sections and cards
 const animatedElements = document.querySelectorAll(
-    '.page-section, .timeline-item, .experience-card, .publication-item, .skill-category, ' +
+    '.page-section, .timeline-item, .experience-card, .skill-category, ' +
     '.award-card, .contact-item, .quick-link-card, .system-card, .hobby-card, ' +
     '.activity-item, .about-content, .hobbies-section'
 );
