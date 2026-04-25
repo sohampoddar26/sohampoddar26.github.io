@@ -1,0 +1,228 @@
+Project VERDE: Vertical Efficiency and Responsible Decarbonization in AI Systems
+A Faculty Research Proposal by Gemini 3 for the Advancement of Sustainable "Green AI" Architectures
+Principal Investigator:
+Affiliation: Department of Computer Science & Artificial Intelligence
+Proposed Duration: 60 Months (5 Years)
+Total Estimated Budget: $2,500,000
+Submission Date: January 18, 2026
+
+1. Executive Summary
+The rapid proliferation of Large Language Models (LLMs) and Generative AI has precipitated a fundamental shift in the computational landscape, transitioning from a regime dominated by training costs to one overwhelmingly driven by inference. As AI systems become ubiquitous—integrated into search engines, operating systems, and edge devices—the aggregate energy consumption of these "always-on" intelligences threatens to undermine global sustainability goals. This proposal, Project VERDE (Vertical Efficiency and Responsible Decarbonization in AI Systems), outlines a comprehensive five-year research agenda designed to address the environmental impact of AI at its root: the system architecture itself.
+Building directly upon the Principal Investigator’s preliminary breakthroughs—specifically the establishment of linear correlations between response length and energy consumption (Poddar et al., NAACL 2025) 1 and the development of "cognitive economy" prompting strategies (Poddar et al., ACL Findings 2025) 2—Project VERDE proposes a paradigm shift from "Red AI" (performance-at-any-cost) to "Green AI" (efficiency-as-a-first-class-citizen). We posit that true sustainability cannot be achieved through hardware improvements alone, which historically trigger the Jevons Paradox 3, where efficiency gains lead to increased consumption. Instead, we must engineer systems that are intrinsically energy-aware, capable of modulating their computational expenditure based on task complexity.
+Our research is structured into four integrated thrusts:
+Cognitive Economy & Inference Dynamics: Operationalizing our "Brevity" hypothesis to create models that dynamically optimize output length and depth, employing techniques like Early-Exit decoding and Energy-First Preference Optimization (EPO).
+Post-Transformer Architectures: Pioneering hybrid neuro-symbolic and state-space architectures (Mamba-Transformer hybrids, BitNet b1.58) that break the quadratic complexity bottleneck of standard Attention mechanisms.
+Green-Native Lifecycles: Revolutionizing the training pipeline through "Green Dataset Pruning" and curriculum learning, ensuring that energy is not wasted on redundant data.
+System-Level Orchestration: Developing carbon-aware scheduling algorithms (LinTS) and standardized "Energy Star" metrics to bridge the gap between algorithmic theory and data center reality.
+By unifying these layers—from the individual bit to the data center grid—Project VERDE aims to decouple the growth of artificial intelligence from its carbon footprint, securing a sustainable future for the digital age.
+
+2. Introduction and Strategic Motivation
+2.1 The Crisis of "Red AI"
+The last decade of progress in Artificial Intelligence has been defined by the "Scaling Laws"—the empirical observation that increasing model size, dataset size, and compute budget reliably yields performance gains. This trajectory, often termed "Red AI," treats energy as an infinite resource. However, the environmental reality is stark. The training of a single flagship LLM can emit carbon equivalent to the lifetime of multiple automobiles. Yet, as we move into 2026, a more insidious challenge has emerged: Inference Energy.
+Unlike training, which is a finite (albeit massive) sunk cost, inference is a continuous operational expenditure. With billions of queries processed daily by services like ChatGPT, Claude, and Gemini, the energy footprint of using AI now dwarfs the cost of creating it.1 Current projections suggest that by 2030, AI-driven data centers could consume a significant percentage of global electricity.4 The industry faces a critical "Energy Wall": without radical improvements in efficiency, the economic and ecological costs of scaling AI will become prohibitive.
+2.2 The Foundation: Building on Prior Work
+This proposal is not speculative; it is grounded in the Principal Investigator's proven track record in sustainable NLP. Our research group has systematically dismantled the "black box" of inference energy.
+Pillar 1: Benchmarking the Invisible Cost (NAACL 2025)
+In our seminal work, "Towards Sustainable NLP: Insights from Benchmarking Inference Energy in Large Language Models" 1, we conducted the first exhaustive energy profiling of modern LLMs across diverse hardware and quantization regimes.
+Key Discovery: We identified a strict linear correlation between input/output token counts and energy consumption. This seemingly simple finding has profound implications: it means that verbosity is the enemy of sustainability.
+Implication: Complex architectural optimizations are often less effective than simply teaching the model to stop talking once the query is answered.
+Pillar 2: The "Brevity" Hypothesis (ACL Findings 2025)
+Following up on our benchmarking, we published "Brevity is the soul of sustainability: Characterizing LLM response lengths".2
+Key Discovery: We demonstrated that standard LLMs are "energetically wasteful" by default, often generating long-winded, repetitive responses due to their training data distributions.
+Innovation: We developed prompting strategies (e.g., LIMIT-LEN, BRIEF) that reduced response lengths by up to 88%, translating to a 58% reduction in energy, often improving response quality by reducing hallucinations.
+Project VERDE seeks to scale these insights from "prompt engineering hacks" to fundamental architectural principles. We ask: What if the model itself wanted to be brief? What if the architecture itself consumed energy only in proportion to the difficulty of the thought?
+2.3 The Theoretical Challenge: Jevons Paradox
+A central theoretical hurdle for Green AI is the Jevons Paradox (or the Rebound Effect).3 Economic history shows that as technology increases the efficiency of a resource (e.g., steam engines using less coal), the total consumption of that resource increases because it becomes profitable to use it in new ways.
+The AI Rebound: If we make inference 100x cheaper through quantization and architectural tweaks, we risk inducing a massive spike in demand—AI in every toaster, AI monitoring every pixel of video streams—that could net higher global emissions.8
+The VERDE Solution: Efficiency per token is necessary but insufficient. We must couple efficiency with Utility Maximization. Our proposal emphasizes "Cognitive Economy"—systems that do not just run faster, but run smarter, actively deciding not to spend compute on low-utility tasks. This "System 2" approach to energy is the only viable defense against the Rebound Effect.
+
+3. Background and State of the Art
+To situate Project VERDE, we must review the current state of efficient AI across three layers: Hardware, Architecture, and Systems.
+3.1 The Memory Wall and Inference Physics
+Inference in autoregressive models (Transformers) is fundamentally memory-bound. For every token generated, the entire model (weights) must be transferred from High Bandwidth Memory (HBM) to the compute cores. This "memory wall" means that energy consumption is dominated by data movement, not arithmetic operations.1
+Current Mitigation: Techniques like Key-Value (KV) caching help avoiding re-computation, but the weights themselves remain a bottleneck.
+Gap: Most research focuses on compressing the weights (quantization). While valuable, this doesn't solve the algorithmic inefficiency of the Transformer's $O(N^2)$ attention mechanism, which makes long-context inference energy-prohibitive.
+3.2 The Rise of Post-Transformer Architectures
+The dominance of the Transformer is being challenged by architectures designed for linear scaling.
+State Space Models (SSMs) / Mamba: These models 9 compress context into a fixed-size recurrent state. This allows for constant-time inference ($O(1)$ per token) and linear memory scaling ($O(L)$). Preliminary benchmarks suggest Mamba can process long sequences with a fraction of the energy of Transformers.
+RWKV: The RWKV project 11 combines the parallel training advantages of Transformers with the efficient, RNN-like inference of recurrent networks. It represents a "best of both worlds" approach that is ripe for rigorous academic analysis.
+Mixture-of-Depths (MoD): Inspired by Mixture-of-Experts, MoD 13 dynamically routes tokens through fewer layers. If a token is "easy," it skips the heavy computation. This is a direct implementation of our "Cognitive Economy" vision.
+3.3 The Metric Crisis
+A significant barrier to Green AI is the lack of standardized metrics.
+Confusion: The field conflates "Throughput" (tokens/sec) with "Efficiency" (Joules/token). A model might have high throughput (fast) but high power draw (hot), leading to poor energy efficiency.
+Emerging Standards: Initiatives like the Salesforce AI Energy Score 15 and ISO/IEC 20226 16 are attempting to create an "Energy Star" label for models. Project VERDE will contribute the empirical data needed to calibrate these standards.
+
+4. Thrust 1: Cognitive Economy and Inference Dynamics
+Hypothesis: The most energy-efficient computation is the one you do not perform. By teaching models to value brevity and providing them with "exit ramps" during generation, we can drastically reduce the energy-per-task without altering the underlying hardware.
+4.1 Energy-First Preference Optimization (EPO)
+Current alignment techniques like RLHF (Reinforcement Learning from Human Feedback) and DPO (Direct Preference Optimization) prioritize "helpfulness," which annotators often correlate with length and detail. This induces a bias toward verbosity.
+Methodology: We will develop Energy-First Preference Optimization (EPO). We will curate a dataset of pairs $(y_l, y_s)$ where $y_l$ is a long, verbose response and $y_s$ is a concise, information-dense response of equal utility.
+Loss Function: We will modify the DPO loss function to include a regularization term penalizing token count:
+$$\mathcal{L}_{EPO} = \mathcal{L}_{DPO}(\pi_\theta; y_w, y_l) + \lambda \cdot \text{Energy}(y)$$
+where $\lambda$ is a hyperparameter controlling the trade-off between preference satisfaction and energy cost.
+Expected Outcome: A family of "Green-Tuned" models (e.g., Llama-3-Green) that default to the most efficient valid answer, reducing token generation by 30-50% compared to base models.
+4.2 Early-Exit and Adaptive Depth
+Building on the concept of Mixture-of-Depths 13, we propose a granular, inference-time adaptation mechanism.
+Sentence-Level Early Termination: Standard models generate until they predict an <EOS> token. We will train a lightweight "Meta-Controller" head that monitors the semantic completeness of the generation. If the informational need of the prompt is met at token $t$, the controller forces termination, preventing the "hedging" and "summary-at-the-end" behaviors common in LLMs.
+Layer-Skipping (Dynamic Depth): We will implement a router that predicts the difficulty of the next token.
+Mechanism: For a simple article determiner ("the"), the router bypasses the heavy MLP blocks of layers 10-30. For a complex named entity, it engages the full depth.
+Validation: We will measure the "Energy-Per-Surprisal" unit, quantifying how much energy is spent to reduce uncertainty.
+4.3 System 1 vs. System 2 Routing
+Cognitive science suggests humans have two modes of thinking: System 1 (fast, intuitive, low energy) and System 2 (slow, deliberative, high energy). We will architect AI systems that mimic this.
+The Router: A small BERT-class model classifies incoming queries.
+Class A (Factual/Recall): "What is the capital of Peru?" $\rightarrow$ Route to 4-bit Quantized Mamba (Small).
+Class B (Reasoning): "Plan a 3-day itinerary for Lima optimized for history lovers." $\rightarrow$ Route to Llama-3-70B (Full Precision).
+Impact: This prevents the "sledgehammer for a nut" problem where a 500W GPU is spun up to answer a trivial question. We estimate this routing alone can improve cluster-level efficiency by 40%.17
+
+5. Thrust 2: Post-Transformer Architectures
+Hypothesis: The Transformer architecture, while powerful, imposes an energy tax that scales poorly. Hybrid architectures combining the state tracking of SSMs with the associative memory of Attention offer a superior Pareto frontier for energy efficiency.
+5.1 Hybrid Mamba-Transformer Models
+State Space Models like Mamba 9 have linear inference complexity but struggle with "in-context retrieval" (e.g., "extract the password from the 500th word of this 10k word document").
+Proposed Architecture: We will design and train "Chimera" models: 90% Mamba layers / 10% Attention layers.
+Design: Blocks of 9 Mamba layers followed by 1 Sliding-Window Attention layer.
+Rationale: The Mamba layers handle the efficient compression of syntax and local semantics (System 1), while the sparse Attention layers provide the "long-range lookups" (System 2) needed for high accuracy.
+Evaluation: We will benchmark Chimera against pure Llama 3 on the Long Range Arena and our own GreenEval suite, specifically measuring "Joules to Retrieve."
+5.2 Extreme Quantization: The Era of 1.58-bit
+We will extend the work on BitNet b1.58 18, which uses ternary weights $\{-1, 0, 1\}$.
+Research Gap: While BitNet proves 1.58-bit is possible, its interaction with dynamic architectures (like MoD) is unexplored.
+Investigation: Can we quantize the "easy" paths of a Mixture-of-Depths model to 1.58-bit while keeping the "expert" paths at 4-bit or 8-bit? This Mixed-Precision Routing would allow the model to adjust not just how much compute it uses (depth), but what kind of compute (precision) per token.
+Hardware Co-Design: We will collaborate with FPGA researchers to simulate hardware accelerators that natively support ternary addition (avoiding multiplication entirely), estimating energy savings of $>10\times$ over FP16 GPUs.
+5.3 Linear Attention and Energy-Based Models
+We will explore the theoretical unification of Attention and Hopfield Networks through Energy-Based Models (EBMs).21
+Theory: Softmax attention can be viewed as minimizing an energy functional. By altering this functional, we can derive Linear Attention mechanisms 23 that approximate the softmax without the $N^2$ cost.
+Goal: To find a "Linear Attention" variant that preserves the "Injectivity" and "Local Modeling" capabilities of Softmax 24 while operating at linear energy cost.
+
+6. Thrust 3: Green-Native Lifecycles (Data and Training)
+Hypothesis: The most efficient way to reduce training energy is to train on less, but better, data. A "Green Curriculum" can accelerate convergence and produce models that are inherently less prone to hallucination (and thus wasted generation).
+6.1 Green Dataset Pruning (SCDP)
+Training on massive, noisy web scrapes (e.g., CommonCrawl) is inefficient. "Dataset Pruning" 25 suggests we can discard significant portions of data without hurting performance.
+Methodology: We will apply Swift Cross-Dataset Pruning (SCDP) using geometric median analysis to identify "core" examples.
+Energy Metric: We will introduce a new metric: "Training Joules per Percent Accuracy". We aim to demonstrate that pruning the bottom 30% of "hard-to-learn" or "noisy" data reduces training energy by 30% while impacting downstream accuracy by $<1\%$.
+6.2 Curriculum Learning for Convergence
+Instead of random data sampling, we will implement Energy-Efficient Curriculum Learning.26
+Strategy: The model is first shown simple, clean, high-utility tokens (e.g., Wikipedia, textbooks). Only after the loss stabilizes are complex, noisy tokens (Reddit, Twitter) introduced.
+Hypothesis: This "easy-to-hard" ordering smooths the optimization landscape, allowing the use of larger learning rates and fewer total training steps. We target a 25% reduction in total training FLOPs.
+6.3 The "Small Data" Effect on Inference
+We posit that models trained on high-quality, concise data (e.g., "Textbooks are all you need") naturally perform better on our "Brevity" benchmarks during inference.
+Experiment: We will train two identical 7B models:
+Model A: Trained on 1T tokens of uncurated web text.
+Model B: Trained on 1T tokens of highly curated, concise text.
+Measurement: We will measure the average token length and energy cost of Model A vs. Model B on the same set of open-ended prompts. We hypothesize Model B will be intrinsically more "Green."
+
+7. Thrust 4: System-Level Orchestration and Standardization
+Hypothesis: Algorithmic gains must be translated into wall-clock savings through carbon-aware infrastructure. Furthermore, without standardized metrics, the industry cannot optimize what it cannot measure.
+7.1 Carbon-Aware Inference Scheduling (LinTS)
+Data centers have variable carbon intensity ($gCO_2/kWh$) based on time of day (solar/wind availability) and location.4
+Development: We will build a Carbon-Aware Dispatcher based on the LinTS framework.29
+Algorithm:
+$$\text{Minimize } \sum_{i} (E_i \times C_i(t)) + \text{Penalty}(\text{SLA\_Violation})$$
+Where $E_i$ is the energy of the query and $C_i(t)$ is the carbon intensity at data center $i$ at time $t$.
+Implementation: A Kubernetes operator that automatically routes delay-tolerant batch jobs (e.g., nightly code analysis) to "Green Zones" (e.g., a data center in Quebec running on hydro) and delay-sensitive jobs to the nearest "Edge" node.
+7.2 Serving Engine Optimization
+We will integrate our findings into open-source serving engines like vLLM and SGLang.30
+Batching Strategies: Current continuous batching optimizes for throughput. We will implement "Eco-Batching," which optimizes for device utilization efficiency. It may slightly delay a request to form a larger, more efficient batch, trading milliseconds of latency for joules of energy.
+KV Cache Offloading: We will optimize LMCache 30 to aggressively offload the KV cache of idle conversations to CPU RAM, allowing the GPU to power down memory banks or host more active users.
+7.3 The "AI Energy Star" Standard
+We will contribute to the standardization of Green AI metrics, collaborating with bodies defining ISO/IEC 20226.16
+Proposed Standard: We advocate for moving away from "per parameter" metrics to "Per-Task Utility" metrics.
+Metric: Joules @ Quality (J@Q). The energy required to achieve a specific score (e.g., 80%) on a benchmark (e.g., HumanEval).
+Labeling: We will design a "Nutrition Label" for AI models, displaying:
+Training Emissions (fixed cost).
+Inference Energy per 1k Tokens (variable cost).
+"Green Efficiency Score" (A to F scale based on J@Q).
+Salesforce AI Energy Score: We will use our cluster to independently validate the leaderboard proposed by Salesforce 15, providing third-party academic rigor to these industrial claims.
+
+8. Methodology and Experimental Design
+8.1 Infrastructure
+The research will be conducted on a dedicated Green AI Cluster tailored for fine-grained power measurement.
+Compute: 8x NVIDIA H100 nodes (representing modern data centers) and 20x NVIDIA Jetson Orin / Raspberry Pi 5 nodes (representing edge deployment).
+Instrumentation: We will not rely solely on software-based NVIDIA-SMI estimations, which can be inaccurate.32 We will install physical Hall Effect sensors on the power rails (12V lines) of the GPUs and CPUs to capture true hardware power draw at 100ms intervals.
+Grid Simulation: We will simulate different grid carbon intensities using historical data from Electricity Maps, allowing us to "virtualize" the location of our cluster during scheduling experiments.
+8.2 The "GreenEval" Dataset
+To support Thrust 1 and 2, we will create and release GreenEval, a benchmark suite specifically designed for energy efficiency.
+Composition: 10,000 prompts spanning varying complexity (arithmetic, creative writing, extraction).
+Annotations: Unlike MMLU, GreenEval will have "Gold Standard" answers annotated for conciseness.
+Baseline: We will record the energy consumption of "Red AI" baselines (GPT-4, Llama-3-70B) on this dataset to serve as the reference point for our improvements.
+8.3 Risk Management
+Risk: Hybrid architectures (Mamba-Transformer) may suffer from training instability.
+Mitigation: We will employ progressive distillation, initializing the hybrid model from a pre-trained Transformer to stabilize the early phases.
+Risk: Carbon-aware scheduling may violate SLAs.
+Mitigation: We will implement "hard constraints" where the scheduler reverts to the nearest data center if the latency budget is approached, ensuring reliability is never compromised for sustainability.
+
+9. Broader Impacts and Policy Implications
+9.1 Confronting the Rebound Effect
+Project VERDE directly addresses the Jevons Paradox. By developing "Cognitive Economy" (Thrust 1), we create models that limit their own consumption based on utility. This introduces a "governor" mechanism that prevents the runaway consumption associated with pure efficiency gains. We will publish policy papers recommending that "Compute Caps" or "Efficiency Standards" be integrated into AI regulation, much like fuel efficiency standards for vehicles.
+9.2 Democratization via Efficiency
+Green AI is also Inclusive AI. The techniques developed in Thrust 2 (1.58-bit models, Mamba) will drastically lower the hardware barrier to entry.
+Global South Impact: Enabling high-quality inference on older, cheaper hardware or battery-powered devices brings advanced AI capabilities to regions with unreliable power grids or limited access to cloud capital.
+Privacy: Efficient edge inference (running on-device) enhances user privacy by keeping data local, removing the need to transmit sensitive queries to energy-hungry central servers.
+9.3 Education: The Next Generation of Green Engineers
+We will integrate this research into the curriculum through a new course: "CS 599: Sustainable AI Systems".33
+Syllabus:
+Module 1: The Physics of Computing (Landauer Limit, CMOS power).
+Module 2: Green Algorithms (Pruning, Quantization, Distillation).
+Module 3: AI Ethics & Climate (Jevons Paradox, Carbon Accounting).
+Lab: Students will compete to solve NLP tasks within a fixed "Energy Budget" (e.g., "Max 500 Joules"), shifting the mindset from "Max Accuracy" to "Max Efficiency."
+
+10. Timeline and Deliverables
+Phase
+Duration
+Key Activities
+Deliverables
+Year 1
+Months 1-12
+Benchmarking & Baselines. Establishing the GreenEval dataset. Rigorous profiling of Mamba vs. Transformer vs. RWKV energy profiles.
+GreenEval Dataset Release. "State of Inference Energy 2026" Report.
+Year 2
+Months 13-24
+Cognitive Economy. Developing EPO and Early-Exit algorithms. Training "Green-Tuned" Llama variants.
+Paper on "Energy-First Preference Optimization." Open-weights "Llama-Green".
+Year 3
+Months 25-36
+Architectural Innovation. Building and training Hybrid Mamba-Transformer models. Exploring 1.58-bit quantization on MoD.
+"Chimera" Model Release. FPGA Simulation Results for Ternary Weights.
+Year 4
+Months 37-48
+System Integration. Implementing Carbon-Aware Scheduler (LinTS) and Eco-Batching in vLLM.
+"Carbon-Aware vLLM" Fork. Real-world Scheduling Case Study.
+Year 5
+Months 49-60
+Standardization & Policy. Finalizing ISO metric contributions. Educational curriculum rollout.
+"AI Energy Star" Whitepaper. Final Project Report.
+
+
+11. Conclusion
+The trajectory of Artificial Intelligence is currently unsustainable. The prevailing "Red AI" ethos, driven by the illusion of infinite energy, is colliding with the physical limits of our power grids and the ecological limits of our planet. Project VERDE proposes a necessary correction. We do not advocate for halting progress; rather, we advocate for a smarter, more disciplined form of progress.
+By targeting the Vertical Efficiency of the stack—from the bit-level precision of the weights, to the cognitive brevity of the response, to the carbon intensity of the electron—we can build AI systems that are powerful, accessible, and responsible. This proposal represents a comprehensive roadmap to ensure that the intelligence of the future is compatible with the survival of the biosphere. The "Green AI" revolution is not just an option; it is an engineering imperative, and our team is uniquely positioned to lead it.
+
+Comparison of Key Technologies Proposed
+Feature
+Standard Transformer ("Red AI")
+Project VERDE Proposed ("Green AI")
+Estimated Energy Impact
+Attention
+$O(N^2)$ (Quadratic)
+Linear (Mamba/RWKV) or Hybrid
+-60% (Long Context)
+Precision
+FP16 (16-bit)
+BitNet b1.58 (1.58-bit)
+-70% (Memory Energy)
+Depth
+Fixed (All layers active)
+Mixture-of-Depths (Dynamic)
+-40% (FLOPs)
+Output
+Verbose, "Helpful"
+Cognitive Economy (Concise)
+-50% (Token Count)
+Scheduling
+Performance-First
+Carbon-Aware (LinTS)
+-30% (Carbon Intensity)
+Objective
+Accuracy Maximization
+Utility-per-Joule Maximization
+Sustainable Growth
+
+[End of Proposal]

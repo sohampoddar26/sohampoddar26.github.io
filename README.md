@@ -24,6 +24,11 @@ This is a multi-page website with the following sections:
 - **script.js** - JavaScript for interactivity and animations
 - **Soham_Poddar_CV.pdf** - Downloadable CV
 
+### Supporting Material
+
+- **docs/source/** - Research drafts, proposal variants, scripts, and the LaTeX CV source
+- **docs/slides/presentation-source/** - Slide generation source files
+
 ## Features
 
 - ✨ Modern and aesthetic design
