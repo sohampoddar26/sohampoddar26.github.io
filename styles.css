@@ -174,21 +174,18 @@ nav .container {
 .hero-title {
     font-size: 3rem;
     margin-bottom: 1rem;
-    animation: fadeInUp 0.8s ease;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     opacity: 0.95;
-    animation: fadeInUp 1s ease;
 }
 
 .hero-description {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-    animation: fadeInUp 1.2s ease;
 }
 
 .social-links {
@@ -196,7 +193,6 @@ nav .container {
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
-    animation: fadeInUp 1.4s ease;
 }
 
 .social-links a {
@@ -228,7 +224,6 @@ nav .container {
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-    animation: fadeInUp 1.6s ease;
 }
 
 .btn-primary {
@@ -740,20 +735,6 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-/* ===========================
-   Animations
-   =========================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* ===========================
