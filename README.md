@@ -14,7 +14,7 @@ This is a multi-page website with the following sections:
 4. **publications.html** - Research publications and papers
 5. **skills.html** - Technical skills and expertise
 6. **awards.html** - Awards, honors, and recognitions
-7. **systems.html** - Systems and projects developed
+7. **research.html** - Broad research projects and research systems
 8. **activities.html** - Academic activities, teaching, reviewing, and service
 9. **hobbies.html** - Personal interests and hobbies
 
@@ -85,11 +85,12 @@ This is a multi-page website with the following sections:
 - GATE Scholarship
 - Other honors
 
-### Systems Developed
-- LLM Optimization Framework
-- Disaster Response Analytics
-- Epidemic Tracking Platform
-- And more...
+### Research
+- Sustainable AI and LLM efficiency
+- Vaccine opinions and social media analytics
+- Legal document summarization
+- Agentic AI, long-term memory, and RAG
+- Research systems such as MESSAGE CHECK
 
 ### Academic Activities
 - Teaching experience

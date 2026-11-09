@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Soham Poddar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo"><a href="./index.html">Soham Poddar</a></h1>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./education.html">Education</a></li>
+                    <li><a href="./experience.html">Experience</a></li>
+                    <li><a href="./skills.html">Skills</a></li>
+                    <li><a href="./awards.html">Awards</a></li>
+                    <li><a href="./publications.html">Publications</a></li>
+                    <li><a href="./research.html" class="active">Research</a></li>
+                    <li><a href="./activities.html">Activities</a></li>
+                    <li><a href="./hobbies.html">Hobbies</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="research" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Broad Research Areas</h2>
+            <p class="section-intro">My work spans natural language processing, large language models, social computing, and applied AI systems.</p>
+
+            <div class="research-grid">
+                <article id="sustainable-ai" class="system-card research-card">
+                    <div class="system-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Sustainable AI and LLM Efficiency</h3>
+                    <p class="research-period">IIT Kharagpur &middot; 2024&ndash;2025</p>
+                    <p class="system-description">Studied the energy use of large language models across NLP tasks and investigated methods for making inference more efficient without sacrificing useful responses.</p>
+                    <ul>
+                        <li>Benchmarked model and inference optimizations, including compression and speculative decoding.</li>
+                        <li>Analysed the relationship between response length, user utility, and energy consumption.</li>
+                        <li>Explored fine-tuning and prompting strategies for controlling generated output.</li>
+                    </ul>
+                    <a class="research-link" href="./publications.html#sustainable-ai"><i class="fas fa-arrow-right"></i> Related publications</a>
+                </article>
+
+                <article id="vaccine-opinions" class="system-card research-card">
+                    <div class="system-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Vaccine Opinions and Social Media Analytics</h3>
+                    <p class="research-period">PhD thesis work, IIT Kharagpur &middot; 2020&ndash;2025</p>
+                    <p class="system-description">Used computational methods to understand how vaccine opinions and concerns evolved on social media before and after the COVID-19 pandemic.</p>
+                    <ul>
+                        <li>Developed the CAVES dataset for explainable multi-label classification of vaccine concerns.</li>
+                        <li>Built Transformer and LLM-based models to identify concerns and extract supporting rationale spans.</li>
+                        <li>Explored personalised counter-argument generation for addressing vaccine misinformation.</li>
+                    </ul>
+                    <a class="research-link" href="./publications.html#vaccine-opinions"><i class="fas fa-arrow-right"></i> Related publications</a>
+                </article>
+
+                <article id="legal-summarization" class="system-card research-card">
+                    <div class="system-icon"><i class="fas fa-scale-balanced"></i></div>
+                    <h3>Legal Document Summarization</h3>
+                    <p class="research-period">MTech project and beyond, IIT Kharagpur &middot; 2019&ndash;2022</p>
+                    <p class="system-description">Investigated extractive and abstractive summarization methods for UK and Indian Supreme Court judgments, with an emphasis on legal structure and domain knowledge.</p>
+                    <ul>
+                        <li>Compared classical machine learning, generic, domain-specific, and Transformer-based methods.</li>
+                        <li>Created a Linear Programming-based approach to incorporate legal-expert guidelines.</li>
+                        <li>Controlled the balance of facts, statutes, precedents, and final judgments in summaries.</li>
+                    </ul>
+                    <a class="research-link" href="./publications.html#legal-summarization"><i class="fas fa-arrow-right"></i> Related publications</a>
+                </article>
+
+                <article id="agentic-ai" class="system-card research-card">
+                    <div class="system-icon"><i class="fas fa-diagram-project"></i></div>
+                    <h3>Agentic AI, Memory, and RAG</h3>
+                    <p class="research-period">Hewlett Packard Enterprise Labs &middot; 2025&ndash;2026</p>
+                    <p class="system-description">Developed and benchmarked LLM agentic frameworks for context engineering, long-term memory, and retrieval-augmented generation.</p>
+                    <ul>
+                        <li>Evaluated memory read/write behaviour and data management with vector and graph databases.</li>
+                        <li>Studied conversational question answering and multi-document question answering.</li>
+                        <li>Built evaluation harnesses for agent behaviour and latency.</li>
+                    </ul>
+                    <a class="research-link" href="./experience.html"><i class="fas fa-arrow-right"></i> Related experience</a>
+                </article>
+            </div>
+
+            <h2 class="section-title research-subtitle">Research Systems and Tools</h2>
+            <div class="research-grid">
+                <article id="message-check" class="system-card research-card">
+                    <div class="system-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>MESSAGE CHECK</h3>
+                    <p class="system-description">A fact-checking dashboard and predictive platform that identifies existing fact-checks matching viral misinformation claims. It supports multilingual queries using BM25+, a supervised FastText classifier, a compact semantic similarity model, and Reciprocal Rank Fusion.</p>
+                    <div class="system-tech">
+                        <span class="tech-tag">BM25+</span>
+                        <span class="tech-tag">FastText</span>
+                        <span class="tech-tag">BERTScore</span>
+                        <span class="tech-tag">RRF</span>
+                    </div>
+                    <div class="system-links">
+                        <a href="https://mdp.vishvasnews.com/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live site</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Soham Poddar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

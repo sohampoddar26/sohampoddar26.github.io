@@ -496,6 +496,16 @@ section:nth-child(even) {
     margin-bottom: 1rem;
 }
 
+.contextual-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contextual-link:hover {
+    text-decoration: underline;
+}
+
 .publication-group-items {
     display: flex;
     flex-direction: column;
@@ -951,11 +961,24 @@ footer p {
     margin-top: 3rem;
 }
 
-/* Systems Page */
-.systems-grid {
+/* Research and Systems Pages */
+.systems-grid,
+.research-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+.section-intro {
+    max-width: 760px;
+    margin: -1rem auto 2.5rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.research-subtitle {
+    margin-top: 4rem;
 }
 
 .system-card {
@@ -996,6 +1019,34 @@ footer p {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.6;
+}
+
+.research-period {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: -0.5rem 0 1rem;
+}
+
+.research-card ul {
+    color: var(--text-secondary);
+    padding-left: 1.25rem;
+    line-height: 1.6;
+}
+
+.research-card li + li {
+    margin-top: 0.5rem;
+}
+
+.research-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    color: var(--primary-color);
+}
+
+.research-link:hover {
+    text-decoration: underline;
 }
 
 .system-tech {
@@ -1439,6 +1490,7 @@ footer p {
     .awards-grid,
     .quick-links-grid,
     .systems-grid,
+    .research-grid,
     .hobbies-grid {
         grid-template-columns: 1fr;
     }
